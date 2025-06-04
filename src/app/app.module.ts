@@ -11,25 +11,27 @@ import { ListaLivrosComponent } from './views/lista-livros/lista-livros.componen
 import { ModalLivroComponent } from './views/modal-livro/modal-livro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AutoriaPipe } from './pipes/autoria.pipe';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CabecalhoComponent,
-    RodapeComponent,
-    LivroComponent,
-    ListaLivrosComponent,
-    ModalLivroComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    RouterModule,
-    FormsModule,
-    HttpClientModule,
-    ReactiveFormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        CabecalhoComponent,
+        RodapeComponent,
+        LivroComponent,
+        ListaLivrosComponent,
+        ModalLivroComponent,
+        AutoriaPipe
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        RouterModule,
+        FormsModule,
+        HttpClientModule,
+        ReactiveFormsModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
