@@ -1,17 +1,20 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, tap } from 'rxjs';
+import { LivrosResultado } from '../models/interfaces';
 
 @Injectable({
     providedIn: 'root'
 })
 export class LivroService {
-    // Url da API google books
     private readonly API = 'https://www.googleapis.com/books/v1/volumes'
     constructor(private http: HttpClient) { }
 
-    // Função de buscar livros de acordo com valor informado no front
-    buscar(valorDigitado: string) {
+    buscar(valorDigitado: string): Observable<LivrosResultado> {
         const params = new HttpParams().append('q', valorDigitado)
-        return this.http.get(this.API, { params })
+        
+        return this.http.get<LivrosResultado>(this.API, { params }).pipe(
+            tap((res) => console.log(res))
+        )
     }
 }

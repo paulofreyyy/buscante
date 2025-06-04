@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Component, OnDestroy } from '@angular/core';
 import { LivroService } from 'src/app/service/livro.service';
 
 @Component({
@@ -6,16 +7,29 @@ import { LivroService } from 'src/app/service/livro.service';
     templateUrl: './lista-livros.component.html',
     styleUrls: ['./lista-livros.component.css']
 })
-export class ListaLivrosComponent {
-
+export class ListaLivrosComponent implements OnDestroy {
     listaLivros: [];
     campoBusca: string = ''
+    subscription: Subscription
 
     constructor(private service: LivroService) { }
 
-    // Função para realizar a busca por livros criada na service
-    buscarLivros(){
-        this.service.buscar(this.campoBusca)
+    buscarLivros() {
+        this.subscription = this.service.buscar(this.campoBusca).subscribe({
+            next: (res) => {
+                console.log(res)
+            },
+            error: (err) => {
+                console.error(err)
+            },
+            complete: () => {
+                console.log('Observable completado')
+            }
+        })
+    }
+
+    ngOnDestroy(){
+        this.subscription.unsubscribe()
     }
 
 }
