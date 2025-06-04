@@ -52,7 +52,7 @@ Resumo:
 - Cuidado com observables de eventos (fromEvent, interval) — sempre unsubscribe.
 - Observables HTTP não precisam de unsubscribe manual.
 
-## Pipe e Map
+## Pipe e Tap
 Pipe: metodo que permite encadear operadores RxJS para transformar, filtrar ou manipular os dados quem um Observable emite. Funciona como um 'encanamento' de operações, onde cada operador processa o dado antes de enviá-lo.
 
 Exemplo com pipe():
